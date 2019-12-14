@@ -27,10 +27,10 @@ function turnLeft(rover){
             rover.direction = "N";
             console.log("Rover is now facing North");
             break;
-    }
-  }
+    };
+}
   
-  function turnRight(rover){
+function turnRight(rover) {
     console.log("turnRight was called!");
     switch (rover.direction) {
         case "N":
@@ -49,27 +49,44 @@ function turnLeft(rover){
             rover.direction = "N";
             console.log("Rover is now facing North");
             break;
-    }
-  }
+    };
+}
   
-  function moveForward(rover){
+function moveForward(rover) {
     console.log("moveForward was called");
     switch (rover.direction) {
         case "N":
-            rover.y--
+            rover.y--;
             console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
             break;
         case "E":
-            rover.x++
+            rover.x++;
             console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
             break;
         case "S":
-            rover.y++
+            rover.y++;
             console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
             break;
         case "W":
-            rover.x--
+            rover.x--;
             console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
             break;
     }
 }
+
+function commandRover(commandList) {
+    let commandArr = commandList.split("");
+    commandArr.forEach( eachCommand => {
+        if (eachCommand === "f") {
+            moveForward(rover);
+        } else if (eachCommand === "r") {
+            turnRight(rover);
+        } else if (eachCommand === "l") {
+            turnLeft(rover);
+        } else {
+            console.log("Not a valid command");
+        };
+    });
+}
+
+commandRover("rffrff");
