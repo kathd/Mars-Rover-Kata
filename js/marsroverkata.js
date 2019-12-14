@@ -4,7 +4,7 @@ const rover = {
     direction: "N",
     x: 0,
     y: 0,
-
+    travelLog: []
 }
 
 // ======================
@@ -57,18 +57,22 @@ function moveForward(rover) {
     switch (rover.direction) {
         case "N":
             rover.y--;
+            rover.travelLog.push(`(${rover.x},${rover.y})`);
             console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
             break;
         case "E":
             rover.x++;
+            rover.travelLog.push(`(${rover.x},${rover.y})`);
             console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
             break;
         case "S":
             rover.y++;
+            rover.travelLog.push(`(${rover.x},${rover.y})`);
             console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
             break;
         case "W":
             rover.x--;
+            rover.travelLog.push(`(${rover.x},${rover.y})`);
             console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
             break;
     }
@@ -87,6 +91,8 @@ function commandRover(commandList) {
             console.log("Not a valid command");
         };
     });
+    console.log(`The Rover has traveled to: ${rover.travelLog}`)
 }
 
-commandRover("rffrff");
+commandRover("rffrfflfrff");
+console.log(rover.travelLog);
