@@ -54,6 +54,22 @@ function turnLeft(rover){
   
   function moveForward(rover){
     console.log("moveForward was called");
-
+    switch (rover.direction) {
+        case "N":
+            rover.y--
+            console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
+            break;
+        case "E":
+            rover.x++
+            console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
+            break;
+        case "S":
+            rover.y++
+            console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
+            break;
+        case "W":
+            rover.x--
+            console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
+            break;
     }
 }
