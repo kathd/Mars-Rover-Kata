@@ -54,11 +54,11 @@ function turnRight(rover) {
   
 function moveForward(rover) {
     console.log("moveForward was called");
-    rover.travelLog.push(`(${rover.x},${rover.y})`); // push starting coordinates to travel log
     switch (rover.direction) {
         case "N":
             if (rover.y===0) {
                 console.log(`Rover can't roam off the map`);
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
                 break;
             } else {
                 rover.y--;
@@ -69,6 +69,7 @@ function moveForward(rover) {
         case "E":
             if (rover.x===9) {
                 console.log(`Rover can't roam off the map`);
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
                 break;
             } else {
                 rover.x++;
@@ -79,6 +80,7 @@ function moveForward(rover) {
         case "S":
             if (rover.y===9) {
                 console.log(`Rover can't roam off the map`);
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
                 break;
             } else {    
                 rover.y++;
@@ -89,9 +91,60 @@ function moveForward(rover) {
         case "W":
             if (rover.x===0) {
                 console.log(`Rover can't roam off the map`);
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
                 break;
             } else {
                 rover.x--;
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
+                console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
+                break;
+            }
+    }
+}
+
+function moveBackward(rover) {
+    console.log("moveBackward was called");
+    switch (rover.direction) {
+        case "N":
+            if (rover.y===9) {
+                console.log(`Rover can't roam off the map`);
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
+                break;
+            } else {
+                rover.y++;
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
+                console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
+                break;
+            }
+        case "E":
+            if (rover.x===0) {
+                console.log(`Rover can't roam off the map`);
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
+                break;
+            } else {
+                rover.x--;
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
+                console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
+                break;
+            }
+        case "S":
+            if (rover.y===0) {
+                console.log(`Rover can't roam off the map`);
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
+                break;
+            } else {    
+                rover.y--;
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
+                console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
+                break;
+            }
+        case "W":
+            if (rover.x===9) {
+                console.log(`Rover can't roam off the map`);
+                rover.travelLog.push(`(${rover.x},${rover.y})`);
+                break;
+            } else {
+                rover.x++;
                 rover.travelLog.push(`(${rover.x},${rover.y})`);
                 console.log(`Rover's coordinates are (${rover.x},${rover.y})`);
                 break;
@@ -108,6 +161,8 @@ function commandRover(commandList) {
             turnRight(rover);
         } else if (eachCommand === "l") {
             turnLeft(rover);
+        } else if (eachCommand === "b") {
+            moveBackward(rover);
         } else {
             console.log("Not a valid command");
         };
@@ -115,6 +170,5 @@ function commandRover(commandList) {
     console.log(`The Rover has traveled to: ${rover.travelLog}`)
 }
 
-//commandRover("f")
-commandRover("rffrfflfrff");
-//console.log(rover.travelLog);
+commandRover("bbb")
+//commandRover("rffrfflfrff");
