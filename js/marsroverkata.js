@@ -6,8 +6,8 @@ const rover = {
     y: 0,
     travelLog: []
 }
-
 // ======================
+
 function turnLeft(rover){
     console.log("turnLeft was called!");
     switch (rover.direction) {
@@ -154,6 +154,7 @@ function moveBackward(rover) {
 
 function commandRover(commandList) {
     let commandArr = commandList.split("");
+    rover.travelLog.push(`(${rover.x},${rover.y})`);
     commandArr.forEach( eachCommand => {
         if (eachCommand === "f") {
             moveForward(rover);
@@ -170,5 +171,5 @@ function commandRover(commandList) {
     console.log(`The Rover has traveled to: ${rover.travelLog}`)
 }
 
-commandRover("bbb")
+commandRover("bbbfftrrfflfr")
 //commandRover("rffrfflfrff");
